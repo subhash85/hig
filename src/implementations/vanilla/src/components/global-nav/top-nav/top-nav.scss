@@ -4,69 +4,85 @@
 
 $group-height: 56px;
 
-.hig__global-nav__top-nav{
-    @include reset;
+.hig__global-nav__top-nav {
+  @include reset;
 
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+
+  position: relative;
+  background: color(hig-white);
+  height: $group-height;
+  line-height: $group-height;
+  z-index: 2;
+
+  @include shadow("dropshadow");
+
+  &__group {
+    position: relative;
     display: flex;
-    justify-content: space-between;
+    align-items: stretch;
+
+    &--right::after {
+      content: '';
+      position: absolute;
+      top: 12px;
+      left: 0;
+      bottom: 12px;
+      border-left: 1px solid color(hig-gray-50);
+    }
+
+    &--left::after {
+      content: '';
+      position: absolute;
+      top: 12px;
+      right: 0;
+      bottom: 12px;
+      border-right: 1px solid color(hig-gray-50);
+    }
+  }
+
+  &__hamburger {
+    width: 46px;
+    display: flex;
+    justify-content: flex-end;
     align-items: center;
 
-    position: relative;
-    background: color(hig-white);
-    height: $group-height;
-    line-height: $group-height;
-    z-index: 2;
-
-    @include shadow("dropshadow");    
-
-    &__group {
-        height: 32px;
-        line-height: 32px;
-        display: flex;
-        align-items: center;
-
-        &--right{
-            border-left: 1px solid color(hig-gray-50);
-        }
-        &--left{
-            padding-right: 20px;
-            border-right: 1px solid color(hig-gray-50);
-        }
-
+    &:hover {
+      cursor: pointer;
     }
 
-    &__hamburger{
-        margin: 0 10px 0 12px;
-
-        &:hover{
-            cursor: pointer;
-        }
-
-        &__closeicon{
-            display: none;
-        }
-
-        &--menuopen &__hamburgericon{
-            display: none;
-        }
-
-        &--menuopen &__closeicon{
-            display: block;
-            
-        }
+    &__hamburgericon {
+      padding-right: 3px;
     }
 
-    &__logo {
-        line-height: 0;
-        height: 24px;
-        line-height: 0;
-
-        & img{
-            height: 100%;
-        }
+    &__closeicon {
+      display: none;
     }
 
-    &__spacer {
-        flex: 1 1 0;
+    &--menuopen &__hamburgericon {
+      display: none;
     }
+
+    &--menuopen &__closeicon {
+      display: block;
+    }
+  }
+
+  &__logo {
+    width: 46px;
+    display: flex;
+    align-items: center;
+    padding-left: 9px;
+
+    & img {
+      max-height: 32px;
+      max-width: 32px;
+    }
+  }
+
+  &__spacer {
+    flex: 1 1 0;
+  }
 }
