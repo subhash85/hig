@@ -79,6 +79,7 @@ class Flyout extends Core {
     container.classList.add(`hig__flyout__container--anchor-${anchorPoint}`);
   }
 
+
   _callbackIfClickOutside(callback, event) {
     if (this.el.contains(event.target) || this.el === event.target) {
       return;
